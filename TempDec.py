@@ -81,9 +81,9 @@ class TempDecl:
             self.driver.refresh()
             
             wait = WebDriverWait(self.driver, 60)
-            symptomsButton = wait.until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "input[type='radio'][name='symptomsFlag'][value='N']"))
-            )
+            wait.until(EC.element_to_be_clickable((By.NAME, "Save")))
+
+            symptomsButton = self.driver.find_element_by_css_selector("input[type='radio'][name='symptomsFlag'][value='N']")
             symptomsButton.click()
 
             time.sleep(0.2)
