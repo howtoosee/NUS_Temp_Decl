@@ -2,9 +2,12 @@ name: declare
 
 on:
   schedule:
-    - cron: '0 9 * * *' # runs at 09:00 UTC everyday
-    - cron: '0 21 * * *' # runs at 09:00 UTC everyday
-  workflow_dispatch
+    - cron: '0 9, 21 * * *' # runs at 09:00 UTC everyday
+  workflow_dispatch:
+    inputs:
+      name: "placeholder"
+      required: false
+      default: ""
 
 jobs:
   build:
