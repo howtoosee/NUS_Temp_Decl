@@ -19,7 +19,7 @@ class TempDecl:
         custom_options = webdriver.ChromeOptions()
         custom_options.add_argument('--no-sandbox')
         custom_options.add_argument("--disable-gpu")
-        # custom_options.add_argument('--headless')
+        custom_options.add_argument('--headless')
         custom_options.add_argument("--incognito")
         custom_options.add_argument("--window-size=800,600")
         custom_options.add_argument("--disable-blink-features=AutomationControlled")
