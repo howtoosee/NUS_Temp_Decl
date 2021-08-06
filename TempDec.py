@@ -44,6 +44,8 @@ class TempDecl:
 
             submitButton = self.driver.find_element_by_id("submitButton")
             submitButton.click()
+            
+            print("Logged in")
 
         except:
             print("Unexpected Error:", sys.exc_info()[0])
