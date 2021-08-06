@@ -1,5 +1,7 @@
 # NUS Temp Declaration
 
+[![declare](https://github.com/howtoosee/NUS_Temp_Decl/actions/workflows/declare.yml/badge.svg)](https://github.com/howtoosee/NUS_Temp_Decl/actions/workflows/declare.yml)
+
 ## Introduction
 
 A short Python script to automate temperature declaration.
