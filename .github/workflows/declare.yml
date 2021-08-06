@@ -29,7 +29,7 @@ jobs:
 
       - name: install chrome driver
         run: |
-          wget -N http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+          wget -N http://chromedriver.storage.googleapis.com/92.0.4515.107/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
 
