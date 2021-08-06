@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os
+import sys, os, traceback
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -19,7 +19,7 @@ class TempDecl:
         custom_options = webdriver.ChromeOptions()
         custom_options.add_argument('--no-sandbox')
         custom_options.add_argument("--disable-gpu")
-        custom_options.add_argument('--headless')
+        # custom_options.add_argument('--headless')
         custom_options.add_argument("--incognito")
         custom_options.add_argument("--window-size=800,600")
         custom_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -44,11 +44,13 @@ class TempDecl:
 
             submitButton = self.driver.find_element_by_id("submitButton")
             submitButton.click()
-            
+
             print("Logged in")
 
+            time.sleep(0.2)
+
         except:
-            print("Unexpected Error:", sys.exc_info()[0])
+            traceback.print_exc()
             exit()
 
 
@@ -76,7 +78,7 @@ class TempDecl:
 
     def declTemp(self, am: bool = True):
         try:
-            symptomsButton = WebDriverWait(self.driver, 10).until(
+            symptomsButton = WebDriverWait(self.driver, 30).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='radio'][name='symptomsFlag'][value='N']"))
             )
             symptomsButton.click()
@@ -103,7 +105,7 @@ class TempDecl:
             print("Declared {} temperature at {}!".format("am" if am else "pm", dt.now(self.tz)))
 
         except:
-            print("Unexpected Error:", sys.exc_info()[0])
+            traceback.print_exc()
 
         finally:
             time.sleep(0.2)
