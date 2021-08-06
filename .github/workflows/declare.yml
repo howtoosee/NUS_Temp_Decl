@@ -4,11 +4,35 @@ on:
   schedule:
     - cron: '0 9 * * *' # runs at 09:00 UTC everyday
     - cron: '0 21 * * *' # runs at 09:00 UTC everyday
+  workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+      - name: install pre-requisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
+          sudo apt-get install default-jdk
+
+      - name: install chrome
+        run: |
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update 
+          sudo apt-get install google-chrome-stable
+
+      - name: install chrome driver
+        run: |
+          wget -N http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          chmod +x chromedriver
+
+          sudo mv -f chromedriver /usr/local/share/chromedriver
+          sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+          sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner
