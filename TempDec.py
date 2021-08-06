@@ -106,9 +106,6 @@ class TempDecl:
             time.sleep(0.2)
             print("Declared {} temperature at {}!".format("am" if am else "pm", dt.now(self.tz)))
 
-        except:
-            traceback.print_exc()
-
         finally:
             time.sleep(0.2)
             self.driver.quit()
