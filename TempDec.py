@@ -79,6 +79,7 @@ class TempDecl:
     def declTemp(self, am: bool = True):
         try:
             self.driver.refresh()
+            
             wait = WebDriverWait(self.driver, 60)
             symptomsButton = wait.until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "input[type='radio'][name='symptomsFlag'][value='N']"))
