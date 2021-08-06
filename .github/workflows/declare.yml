@@ -3,15 +3,15 @@ name: declare
 on:
   schedule:
     - cron: '0 9, 21 * * *' # runs at 09:00 UTC everyday
+    
   workflow_dispatch:
-    inputs:
-      name: "placeholder"
-      required: false
-      default: ""
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     steps:
 
       - name: install pre-requisites
