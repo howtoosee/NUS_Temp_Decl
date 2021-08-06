@@ -17,11 +17,13 @@ class TempDecl:
 
     def __init__(self):
         custom_options = webdriver.ChromeOptions()
-        custom_options.add_argument("no-sandbox")
+        custom_options.add_argument('--no-sandbox')
         custom_options.add_argument("--disable-gpu")
-        custom_options.add_argument("--window-size=800,600")
+        custom_options.add_argument('--headless')
         custom_options.add_argument("--incognito")
+        custom_options.add_argument("--window-size=800,600")
         custom_options.add_argument("--disable-blink-features=AutomationControlled")
+        
 
         self.tz = timezone('Asia/Singapore')
         self.driver = webdriver.Chrome(options=custom_options)
